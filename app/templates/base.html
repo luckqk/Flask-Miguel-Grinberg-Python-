@@ -1,0 +1,30 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{title}} - Microblog</title>
+        {% else %}
+        <title>Welcome to Microblog!</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Microblog:
+             <!-- 使用url_for('index')替换/index可以避免url变化带来的更改错误-->
+            <!-- old ：href="/index">Home -->
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+        <hr>
+        <!-- Flashed message 处理方式-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
