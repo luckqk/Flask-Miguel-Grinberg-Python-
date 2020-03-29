@@ -1,14 +1,4 @@
-2020-03-28 17:03:31,810 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
-2020-03-28 17:03:38,848 ERROR: Exception on /edit_profile [POST] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
-    cursor, statement, parameters, context
-  File "d:\python\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
-
-The above exception was the direct cause of the following exception:
-
+2020-03-29 21:24:12,257 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -24,52 +14,20 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 107, in edit_profile
-    db.session.commit()
-  File "d:\python\lib\site-packages\sqlalchemy\orm\scoping.py", line 162, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 1036, in commit
-    self.transaction.commit()
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 503, in commit
-    self._prepare_impl()
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 482, in _prepare_impl
-    self.session.flush()
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 2496, in flush
-    self._flush(objects)
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 2637, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "d:\python\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
-    exc_value, with_traceback=exc_tb,
-  File "d:\python\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
-    raise exception
-  File "d:\python\lib\site-packages\sqlalchemy\orm\session.py", line 2597, in _flush
-    flush_context.execute()
-  File "d:\python\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 422, in execute
-    rec.execute(self)
-  File "d:\python\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 589, in execute
-    uow,
-  File "d:\python\lib\site-packages\sqlalchemy\orm\persistence.py", line 236, in save_obj
-    update,
-  File "d:\python\lib\site-packages\sqlalchemy\orm\persistence.py", line 995, in _emit_update_statements
-    statement, multiparams
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 984, in execute
-    return meth(self, multiparams, params)
-  File "d:\python\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 1103, in _execute_clauseelement
-    distilled_params,
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 1288, in _execute_context
-    e, statement, parameters, cursor, context
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 1482, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "d:\python\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
-    raise exception
-  File "d:\python\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
-    cursor, statement, parameters, context
-  File "d:\python\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
-[parameters: ('bb', 'sad day', 2)]
-(Background on this error at: http://sqlalche.me/e/gkpj)
-2020-03-28 17:14:00,406 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
+    form = PostForm()
+  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
+    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
+    return unbound_field.bind(form=form, **options)
+  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
+    return self.field_class(*self.args, **kw)
+TypeError: __init__() got an unexpected keyword argument 'vallidators'
+2020-03-29 21:28:28,753 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+2020-03-29 21:35:53,017 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]

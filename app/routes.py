@@ -3,33 +3,32 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm
 from flask_login import current_user, login_user
-from app.models import User
-from flask_login import logout_user
-from flask_login import login_required
+from app.models import User, Post
+from flask_login import logout_user, login_required
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm
+from app.forms import RegistrationForm, EditProfileForm, PostForm
 from datetime import datetime
-from app.forms import EditProfileForm
 
 #两个装饰器，与index()功能相关联
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 #保护函数不受未经身份验证的用户访问
 @login_required
 def index():
-    user = {'username': 'Miguel'}
-    posts = [
-        {
-            'author':{'username':'John'},
-            'body':'Beautiful day in Shanghai!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers is cool!'
-        }
-    ]
-    return render_template('index.html',title='Home',posts=posts)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        #重定向的作用在于提醒用户已经提交动态，若不重定向
+        #在刷新页面时会产生重复提交的矛盾
+        return redirect(url_for('index'))
+    #all()会将结果制成列表
+    posts = current_user.followed_posts().all()
+    #render_template会渲染参数中的部分
+    return render_template('index.html',title='Home Page', form=form, posts=posts)
 
 #登录页面渲染
 @app.route('/login', methods=['GET','POST'])
@@ -96,7 +95,7 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
-#个人编辑界面
+#个人主页界面
 @app.route('/edit_profile',methods=['GET','POST'])
 @login_required
 def edit_profile():
@@ -112,3 +111,42 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+#关注用户渲染
+@app.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot follow yourself!')
+        return  redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('You are following {}!'.format(username))
+    return redirect(url_for('user', username=username))
+
+#取关用户渲染
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot unfollow yourself!')
+        return redirect(url_for('user', username=username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash('You are not following {}!'.format(username))
+    return redirect(url_for('user', username=username))
+
+#探索界面渲染
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('index.html', title='Explore', posts=posts)
