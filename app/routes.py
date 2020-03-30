@@ -7,8 +7,10 @@ from app.models import User, Post
 from flask_login import logout_user, login_required
 from werkzeug.urls import url_parse
 from app import db
-from app.forms import RegistrationForm, EditProfileForm, PostForm
+from app.forms import RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm,\
+    ResetPasswordForm
 from datetime import datetime
+from app.email import send_password_reset_email
 
 #两个装饰器，与index()功能相关联
 @app.route('/', methods=['GET', 'POST'])
@@ -25,10 +27,19 @@ def index():
         #重定向的作用在于提醒用户已经提交动态，若不重定向
         #在刷新页面时会产生重复提交的矛盾
         return redirect(url_for('index'))
-    #all()会将结果制成列表
-    posts = current_user.followed_posts().all()
+    #展示结果分页处理
+    page = request.args.get('page', 1, type=int)
+    #current_user.followed_posts().all() all()会将结果制成列表
+    #分页因此采用paginate
+    posts = current_user.followed_posts().paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('index', page=posts.next_num)\
+        if posts.has_next else None
+    prev_url = url_for('index',page=posts.prev_num)\
+        if posts.has_prev else None
     #render_template会渲染参数中的部分
-    return render_template('index.html',title='Home Page', form=form, posts=posts)
+    return render_template('index.html',title='Home Page', form=form, posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
 
 #登录页面渲染
 @app.route('/login', methods=['GET','POST'])
@@ -148,5 +159,42 @@ def unfollow(username):
 @app.route('/explore')
 @login_required
 def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title='Explore', posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('explore', page=posts.next_num)\
+        if posts.has_next else None
+    prev_url = url_for('explore',page=posts.prev_num)\
+        if posts.has_prev else None
+    return render_template('index.html', title='Explore', posts=posts.items)
+
+#重置密码邮箱界面渲染
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Check your email for the instructions to reset your password')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html',
+                               title='Reset Password', form=form)
+
+#重置密码界面渲染
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset.')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)

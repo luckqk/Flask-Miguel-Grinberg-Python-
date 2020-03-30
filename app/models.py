@@ -6,6 +6,9 @@ from flask_login import UserMixin
 from app import login
 #头像服务
 from hashlib import md5
+from time import time
+import jwt
+from app import app
 
 #用户关联表,辅助表
 followers = db.Table('followers',
@@ -82,6 +85,22 @@ class User(UserMixin, db.Model):
         own = Post.query.filter_by(user_id=self.id)
         #合并排序
         return followed.union(own).order_by(Post.timestamp.desc())
+
+    #产生jwt令牌
+    def get_reset_password_token(self, expires_in=600):
+        return jwt.encode(
+            {'reset_password':self.id, 'exp':time() + expires_in},
+            app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
+
+    #静态方法，验证失败返回None，成功返回用户ID
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
 #动态发布类
 class Post(db.Model):

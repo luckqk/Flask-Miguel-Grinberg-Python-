@@ -18,3 +18,6 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     #接收错误的电子邮箱列表
     ADMINS = ['mvdlkq@sohu.com']
+
+    #定义了每页展示的项数
+    POSTS_PER_PAGE = 3
