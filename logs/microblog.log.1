@@ -1,83 +1,4 @@
-2020-03-29 21:24:12,257 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
-    form = PostForm()
-  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'vallidators'
-2020-03-29 21:28:28,753 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
-2020-03-29 21:35:53,017 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
-2020-03-30 09:02:44,088 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
-2020-03-30 10:07:26,789 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
-2020-03-30 15:38:58,728 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
-2020-03-30 15:39:13,747 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 174, in reset_password_request
-    if current_user.is_authenticated():
-TypeError: 'bool' object is not callable
-2020-03-30 15:41:05,215 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
-2020-03-30 15:41:10,646 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "d:\python\lib\site-packages\flask\app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "d:\python\lib\site-packages\flask\app.py", line 2097, in make_response
-    "The view function did not return a valid response. The"
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-03-30 15:45:45,909 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "d:\python\lib\site-packages\flask\app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "d:\python\lib\site-packages\flask\app.py", line 2097, in make_response
-    "The view function did not return a valid response. The"
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-03-30 15:49:56,812 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
-2020-03-30 16:37:17,389 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
-2020-03-30 20:37:58,437 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:57]
-2020-03-30 20:38:06,107 ERROR: Exception on /login [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+2020-03-30 20:38:19,233 ERROR: Exception on /login [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -112,3 +33,112 @@ Traceback (most recent call last):
   File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\login.html", line 20, in template
     <!--{% block app_content %}-->
 jinja2.exceptions.TemplateAssertionError: block 'app_content' defined twice
+2020-03-30 20:40:07,581 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:57]
+2020-04-01 15:57:05,035 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:59]
+2020-04-01 15:58:06,464 ERROR: Exception on /user/aa [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 100, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "d:\python\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
+    <html{% block html_attribs %}{% endblock html_attribs %}>
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
+    {%- endblock metas %}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
+    {%- block styles %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 24, in block "app_content"
+    {% include '_post.html' %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 12, in top-level template code
+    said {{ moment(post.timestamp).fromNow() }}:
+  File "d:\python\lib\site-packages\flask_moment.py", line 133, in fromNow
+    return self._render("fromNow(%s)" % int(no_suffix), refresh)
+  File "d:\python\lib\site-packages\flask_moment.py", line 123, in _render
+    t = self._timestamp_as_iso_8601(self.timestamp)
+  File "d:\python\lib\site-packages\flask_moment.py", line 120, in _timestamp_as_iso_8601
+    return timestamp.strftime('%Y-%m-%dT%H:%M:%S' + tz)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'timestamp'
+2020-04-01 16:00:17,328 ERROR: Exception on /user/aa [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 100, in user
+    return render_template('user.html', user=user, posts=posts)
+  File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
+    ctx.app,
+  File "d:\python\lib\site-packages\flask\templating.py", line 120, in _render
+    rv = template.render(context)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
+    <html{% block html_attribs %}{% endblock html_attribs %}>
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
+    {%- endblock metas %}
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
+    {%- block styles %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
+    {% block app_content %}{% endblock %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 24, in block "app_content"
+    {% include '_post.html' %}
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 12, in top-level template code
+    said {{ moment(post.timestamp).fromNow() }}:
+  File "d:\python\lib\site-packages\flask_moment.py", line 133, in fromNow
+    return self._render("fromNow(%s)" % int(no_suffix), refresh)
+  File "d:\python\lib\site-packages\flask_moment.py", line 123, in _render
+    t = self._timestamp_as_iso_8601(self.timestamp)
+  File "d:\python\lib\site-packages\flask_moment.py", line 120, in _timestamp_as_iso_8601
+    return timestamp.strftime('%Y-%m-%dT%H:%M:%S' + tz)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'timestamp'
+2020-04-01 16:35:08,574 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:59]

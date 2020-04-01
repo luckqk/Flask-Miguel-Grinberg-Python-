@@ -1,4 +1,4 @@
-2020-03-29 21:21:27,341 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+2020-03-29 21:24:12,257 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,7 +29,12 @@ Traceback (most recent call last):
   File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
     return self.field_class(*self.args, **kw)
 TypeError: __init__() got an unexpected keyword argument 'vallidators'
-2020-03-29 21:21:33,809 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+2020-03-29 21:28:28,753 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+2020-03-29 21:35:53,017 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+2020-03-30 09:02:44,088 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+2020-03-30 10:07:26,789 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:53]
+2020-03-30 15:38:58,728 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
+2020-03-30 15:39:13,747 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -43,24 +48,36 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
-    form = PostForm()
-  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'vallidators'
-2020-03-29 21:21:36,180 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 174, in reset_password_request
+    if current_user.is_authenticated():
+TypeError: 'bool' object is not callable
+2020-03-30 15:41:05,215 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
+2020-03-30 15:41:10,646 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "d:\python\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "d:\python\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-03-30 15:45:45,909 ERROR: Exception on /reset_password_request [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "d:\python\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "d:\python\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-03-30 15:49:56,812 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
+2020-03-30 16:37:17,389 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:55]
+2020-03-30 20:37:58,437 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:57]
+2020-03-30 20:38:06,107 ERROR: Exception on /login [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -74,82 +91,24 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
-    form = PostForm()
-  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'vallidators'
-2020-03-29 21:22:29,983 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
-    form = PostForm()
-  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'vallidators'
-2020-03-29 21:22:43,064 ERROR: Exception on / [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 19, in index
-    form = PostForm()
-  File "d:\python\lib\site-packages\wtforms\form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "d:\python\lib\site-packages\flask_wtf\form.py", line 87, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 272, in __init__
-    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
-  File "d:\python\lib\site-packages\wtforms\form.py", line 52, in __init__
-    field = meta.bind_field(self, unbound_field, options)
-  File "d:\python\lib\site-packages\wtforms\meta.py", line 27, in bind_field
-    return unbound_field.bind(form=form, **options)
-  File "d:\python\lib\site-packages\wtforms\fields\core.py", line 353, in bind
-    return self.field_class(*self.args, **kw)
-TypeError: __init__() got an unexpected keyword argument 'vallidators'
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 67, in login
+    return render_template('login.html',title='Sign In', form=form)
+  File "d:\python\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "d:\python\lib\site-packages\jinja2\loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\login.html", line 20, in template
+    <!--{% block app_content %}-->
+jinja2.exceptions.TemplateAssertionError: block 'app_content' defined twice
