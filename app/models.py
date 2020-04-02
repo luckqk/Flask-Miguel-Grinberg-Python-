@@ -109,7 +109,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     #下面传入了datetime.utcnow函数，该函数可以自行设计
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-
+    language = db.Column(db.String(5))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
