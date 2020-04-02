@@ -21,3 +21,6 @@ class Config(object):
 
     #定义了每页展示的项数
     POSTS_PER_PAGE = 3
+
+    #定义支持的语言列表
+    LANGUAGES = ['en', 'es']
