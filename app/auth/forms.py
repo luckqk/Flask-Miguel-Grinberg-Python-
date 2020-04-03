@@ -1,7 +1,7 @@
 #用户相关表单
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 from flask_babel import _, lazy_gettext as _l
 
@@ -33,27 +33,6 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError(_('Please use a different email address.'))
-
-#个人资料编辑
-class EditProfileForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
-    about_me = TextAreaField(_l('About me'), validators=[Length(min=0,max=140)])
-    submit = SubmitField(_l('Submit'))
-
-    def __init__(self, original_username, *args, **kwargs):
-        super(EditProfileForm, self).__init__(*args, **kwargs)
-        self.original_username = original_username
-
-    def validate_username(self, username):
-        if username.data != self.original_username:
-            user = User.query.filter_by(username=self.username.data).first()
-            if user is not None:
-                raise ValidationError(_('Please use a different username!'))
-
-#动态编辑
-class PostForm(FlaskForm):
-    post = TextAreaField(_l('Say something'), validators=[DataRequired()])
-    submit = SubmitField(_l('Submit'))
 
 #重置密码邮箱段
 class ResetPasswordRequestForm(FlaskForm):

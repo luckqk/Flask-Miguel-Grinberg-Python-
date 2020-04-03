@@ -1,4 +1,4 @@
-2020-04-02 11:13:08,716 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+2020-04-03 10:55:50,353 ERROR: Exception on / [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 40, in index
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\main\routes.py", line 51, in index
     next_url=next_url, prev_url=prev_url)
   File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
     ctx.app,
@@ -36,20 +36,22 @@ Traceback (most recent call last):
     <html{% block html_attribs %}{% endblock html_attribs %}>
   File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
     {%- endblock metas %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
-    {% block app_content %}{% endblock %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\index.html", line 11, in block "app_content"
-    {% include '_post.html' %}
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 15, in template
-    username=user_link, when=moment(post.timestamp).fromNow() }}:
-jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
-2020-04-02 11:13:18,341 ERROR: Exception on /index [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 12, in block "body"
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 29, in block "navbar"
+    <li><a href="{{ url_for('main.logout') }}">{{ _('Logout') }}</a></li>
+  File "d:\python\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\python\lib\site-packages\flask\app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.logout'. Did you mean 'auth.logout' instead?
+2020-04-03 10:57:16,119 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:84]
+2020-04-03 10:57:54,724 ERROR: Exception on /user/aa [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -65,51 +67,47 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 40, in index
-    next_url=next_url, prev_url=prev_url)
-  File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "d:\python\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
-    {% block app_content %}{% endblock %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\index.html", line 11, in block "app_content"
-    {% include '_post.html' %}
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 15, in template
-    username=user_link, when=moment(post.timestamp).fromNow() }}:
-jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
-2020-04-02 11:14:42,173 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 11:28:54,785 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 11:29:33,970 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 11:30:46,264 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 14:10:16,634 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 14:11:58,741 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 14:33:20,115 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 14:33:40,257 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 16:37:24,250 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 16:42:11,112 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 16:43:52,116 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 16:44:04,456 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
-2020-04-02 16:44:15,847 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\main\routes.py", line 77, in user
+    if posts.has_next else None
+  File "d:\python\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\python\lib\site-packages\flask\app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['page', 'username']. Did you mean 'main.user' instead?
+2020-04-03 11:00:13,345 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:84]
+2020-04-03 11:00:30,330 ERROR: Exception on /edit_profile [POST] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\main\routes.py", line 93, in edit_profile
+    return redirect(url_for('edit_profile'))
+  File "d:\python\lib\site-packages\flask\helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "d:\python\lib\site-packages\flask\app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "d:\python\lib\site-packages\flask\helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
+2020-04-03 11:01:22,520 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:84]
