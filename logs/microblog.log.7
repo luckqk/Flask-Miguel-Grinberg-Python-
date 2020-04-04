@@ -1,19 +1,30 @@
-2020-03-30 20:38:19,233 ERROR: Exception on /login [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+2020-04-02 11:03:10,613 ERROR: Exception on /favicon.ico [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\python\lib\site-packages\flask\app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "d:\python\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 67, in login
-    return render_template('login.html',title='Sign In', form=form)
+  File "d:\python\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\errors.py", line 7, in not_found_error
+    return render_template('404.html'),404
   File "d:\python\lib\site-packages\flask\templating.py", line 138, in render_template
     ctx.app.jinja_env.get_or_select_template(template_name_or_list),
   File "d:\python\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
@@ -30,115 +41,99 @@ Traceback (most recent call last):
     reraise(*rewrite_traceback_stack(source=source))
   File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\login.html", line 20, in template
-    <!--{% block app_content %}-->
-jinja2.exceptions.TemplateAssertionError: block 'app_content' defined twice
-2020-03-30 20:40:07,581 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:57]
-2020-04-01 15:57:05,035 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:59]
-2020-04-01 15:58:06,464 ERROR: Exception on /user/aa [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\404.html", line 4, in template
+    <h1>{{ _('File Not Found') </h1>
+jinja2.exceptions.TemplateSyntaxError: unexpected '/'
+2020-04-02 11:08:19,275 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:63]
+2020-04-02 11:08:25,729 ERROR: Exception on /favicon.ico [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\python\lib\site-packages\flask\app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "d:\python\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 100, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "d:\python\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
+  File "d:\python\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\errors.py", line 7, in not_found_error
+    return render_template('404.html'),404
+  File "d:\python\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "d:\python\lib\site-packages\jinja2\loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
   File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
     reraise(*rewrite_traceback_stack(source=source))
   File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 2, in top-level template code
-    {% extends "base.html" %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
-    {% block app_content %}{% endblock %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 24, in block "app_content"
-    {% include '_post.html' %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 12, in top-level template code
-    said {{ moment(post.timestamp).fromNow() }}:
-  File "d:\python\lib\site-packages\flask_moment.py", line 133, in fromNow
-    return self._render("fromNow(%s)" % int(no_suffix), refresh)
-  File "d:\python\lib\site-packages\flask_moment.py", line 123, in _render
-    t = self._timestamp_as_iso_8601(self.timestamp)
-  File "d:\python\lib\site-packages\flask_moment.py", line 120, in _timestamp_as_iso_8601
-    return timestamp.strftime('%Y-%m-%dT%H:%M:%S' + tz)
-jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'timestamp'
-2020-04-01 16:00:17,328 ERROR: Exception on /user/aa [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\404.html", line 4, in template
+    <h1>{{ _('File Not Found') </h1>
+jinja2.exceptions.TemplateSyntaxError: unexpected '/'
+2020-04-02 11:09:40,348 ERROR: Exception on /favicon.ico [GET] [in d:\python\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\python\lib\site-packages\flask\app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "d:\python\lib\site-packages\flask\app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "d:\python\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "d:\python\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "d:\python\lib\site-packages\flask\app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
   File "d:\python\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "d:\python\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "d:\python\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "d:\python\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "d:\python\lib\site-packages\flask\app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "d:\python\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\routes.py", line 100, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "d:\python\lib\site-packages\flask\templating.py", line 140, in render_template
-    ctx.app,
-  File "d:\python\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "d:\python\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
+  File "d:\python\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "d:\python\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\errors.py", line 7, in not_found_error
+    return render_template('404.html'),404
+  File "d:\python\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "d:\python\lib\site-packages\jinja2\loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "d:\python\lib\site-packages\jinja2\environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
   File "d:\python\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
     reraise(*rewrite_traceback_stack(source=source))
   File "d:\python\lib\site-packages\jinja2\_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 2, in top-level template code
-    {% extends "base.html" %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "d:\python\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block "body"
-    {%- block styles %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\base.html", line 48, in block "content"
-    {% block app_content %}{% endblock %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\user.html", line 24, in block "app_content"
-    {% include '_post.html' %}
-  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\_post.html", line 12, in top-level template code
-    said {{ moment(post.timestamp).fromNow() }}:
-  File "d:\python\lib\site-packages\flask_moment.py", line 133, in fromNow
-    return self._render("fromNow(%s)" % int(no_suffix), refresh)
-  File "d:\python\lib\site-packages\flask_moment.py", line 123, in _render
-    t = self._timestamp_as_iso_8601(self.timestamp)
-  File "d:\python\lib\site-packages\flask_moment.py", line 120, in _timestamp_as_iso_8601
-    return timestamp.strftime('%Y-%m-%dT%H:%M:%S' + tz)
-jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'timestamp'
-2020-04-01 16:35:08,574 INFO: Microblog startup [in E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\__init__.py:59]
+  File "E:\Ç®À¤\Á·Ï°\python\testProject_032620\app\templates\404.html", line 4, in template
+    <h1>{{ _('File Not Found') </h1>
+jinja2.exceptions.TemplateSyntaxError: unexpected '/'

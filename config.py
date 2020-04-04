@@ -25,5 +25,7 @@ class Config(object):
     POSTS_PER_PAGE = 3
     #定义支持的语言列表
     LANGUAGES = ['en', 'es']
+    #elasticsearch配置
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')

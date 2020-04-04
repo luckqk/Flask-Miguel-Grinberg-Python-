@@ -9,6 +9,53 @@ from flask import current_app
 from hashlib import md5
 from time import time
 import jwt
+from app.search import add_to_index, remove_from_index, query_index
+
+class SearchableMixin(object):
+    #封装query_index,将对象ID列表转换为实例对象
+    @classmethod
+    def search(cls, expression, page, per_page):
+        ids, total = query_index(cls.__tablename__, expression, page, per_page)
+        if total == 0:
+            return cls.query.filter_by(id=0),0
+        when = []
+        for i in range(len(ids)):
+            when.append((ids[i], i))
+        return cls.query.filter(cls.id.in_(ids)).order_by(
+            db.case(when, value=cls.id)), total
+
+    #提交前处理，记录添加、修改、删除的对象
+    @classmethod
+    def before_commit(cls, session):
+        session._changes = {
+            'add': list(session.new),
+            'update': list(session.dirty),
+            'delete': list(session.deleted)
+        }
+
+    #提交后处理，对相应Elasticsearch中的内容进行处理
+    @classmethod
+    def after_commit(cls, session):
+        for obj in session._changes['add']:
+            if isinstance(obj, SearchableMixin):
+                add_to_index(obj.__tablename__, obj)
+        for obj in session._changes['update']:
+            if isinstance(obj, SearchableMixin):
+                add_to_index(obj.__tablename__, obj)
+        for obj in session._changes['delete']:
+            if isinstance(obj, SearchableMixin):
+                    remove_from_index(obj.__tablename__, obj)
+        session._changes = None
+
+    #刷新所有数据的索引
+    @classmethod
+    def reindex(cls):
+        for obj in cls.query:
+            add_to_index(cls.__tablename__, obj)
+
+# db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
+# db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
+
 
 #用户关联表,辅助表
 followers = db.Table(
@@ -104,7 +151,9 @@ class User(UserMixin, db.Model):
         return User.query.get(id)
 
 #动态发布类
-class Post(db.Model):
+class Post(SearchableMixin, db.Model):
+    #用以决定是否被索引
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -114,6 +163,9 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+db.event.listen(db.session, 'before_commit', Post.before_commit)
+db.event.listen(db.session, 'after_commit', Post.after_commit)
 
 #此处id为字符串类型转换为int型
 @login.user_loader
